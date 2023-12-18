@@ -6,10 +6,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "users")
 public class User {
-
-    public User() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +19,8 @@ public class User {
     public String getName() {
 
         return name;
+    }
+    public User() {
     }
 
     public void setName(String name) {

@@ -18,42 +18,43 @@ public class UserController {
     }
 
     @GetMapping
-    public String printUsersList(Model model) {
+    public String printAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users/index";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") long id, Model model) {
+    public String showUser(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.showUser(id));
         return "users/show";
     }
 
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String addNewUser(@ModelAttribute("user") User user) {
+
         return "users/new";
     }
 
     @PostMapping
-    public String create(@ModelAttribute("user") User user) {
+    public String createUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") long id) {
+    public String editUser(Model model, @PathVariable("id") long id) {
     model.addAttribute("user", userService.showUser(id));
     return "users/edit";
     }
 
     @PatchMapping ("/{id}")
-    public String update(@ModelAttribute("user") User user) {
+    public String updateUser(@ModelAttribute("user") User user) {
     userService.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id) {
+    public String deleteUser(@PathVariable("id") long id) {
     userService.removeUserById(id);
         return "redirect:/users";
     }
