@@ -30,8 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String addNewUser(@ModelAttribute("user") User user) {
-
+    public String newUserPage(@ModelAttribute("user") User user) {
         return "users/new";
     }
 
@@ -42,20 +41,20 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") long id) {
-    model.addAttribute("user", userService.showUser(id));
-    return "users/edit";
+    public String editUserPage(Model model, @PathVariable("id") long id) {
+        model.addAttribute("user", userService.showUser(id));
+        return "users/edit";
     }
 
-    @PatchMapping ("/{id}")
+    @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user) {
-    userService.updateUser(user);
+        userService.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") long id) {
-    userService.removeUserById(id);
+        userService.removeUserById(id);
         return "redirect:/users";
     }
 
