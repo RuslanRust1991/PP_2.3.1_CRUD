@@ -15,13 +15,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void saveUser(User user) {
-
         entityManager.persist(user);
     }
 
     @Override
     public User showUser(long id) {
-
         return entityManager.find(User.class, id);
     }
 
@@ -33,13 +31,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
     public void updateUser(User user) {
-
         entityManager.merge(user);
     }
 

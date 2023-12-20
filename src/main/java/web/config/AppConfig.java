@@ -26,7 +26,6 @@ public class AppConfig {
     private final Environment env;
 
     public AppConfig(Environment env) {
-
         this.env = env;
     }
 

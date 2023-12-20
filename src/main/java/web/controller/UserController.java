@@ -13,7 +13,6 @@ public class UserController {
     private final UserService userService;
 
     public UserController(UserService userService) {
-
         this.userService = userService;
     }
 
@@ -30,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String newUserPage(@ModelAttribute("user") User user) {
+    public String getNewUserPage(@ModelAttribute("user") User user) {
         return "users/new";
     }
 
